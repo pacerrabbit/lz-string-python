@@ -1,3 +1,6 @@
+** This branch is an edited version of lzstring optimized for the use in NextLesson. **
+All api remain the same. String concatenations have been replaced with list appending for better performance in parsing interactive lessons data.
+
 lz-string-python
 ================
 
