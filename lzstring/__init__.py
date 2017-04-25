@@ -543,8 +543,8 @@ class LZString(object):
             return ''
 
         dictionary[3] = c
-        result = c
-        w = result
+        result = [c]
+        w = result[0]
 
         while True:
             if data_index > len(data_string):
@@ -611,7 +611,7 @@ class LZString(object):
                 c = dictSize - 1
                 enlargeIn -= 1
             elif c == 2:
-                return result
+                return ''.join(result)
 
             if enlargeIn == 0:
                 enlargeIn = pow(2, numBits)
@@ -625,7 +625,7 @@ class LZString(object):
                 else:
                     return None
 
-            result += entry
+            result.append(entry)
 
             dictionary[dictSize] = w + entry[0]
             dictSize += 1
