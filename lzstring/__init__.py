@@ -641,7 +641,7 @@ class LZString(object):
         if iinput is None:
             return ''
 
-        output = ""
+        output = [] 
         ol = 0
         output_ = ''
 
@@ -667,19 +667,20 @@ class LZString(object):
                 output_ = chr1 << 8
 
                 if enc3 != 64:
-                    output += chr(output_ | chr2)
+                    output.append(chr(output_ | chr2))
 
                 if enc4 != 64:
                     output_ = chr3 << 8
             else:
-                output = output + chr(output_ | chr1)
+                output.append(chr(output_ | chr1))
 
                 if enc3 != 64:
                     output_ = chr2 << 8
 
                 if enc4 != 64:
-                    output += chr(output_ | chr3)
+                    output.append(chr(output_ | chr3))
 
             ol += 3
 
-        return self.decompress(output)
+        output_str = "".join(output)
+        return self.decompress(output_str)
